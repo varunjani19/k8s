@@ -96,5 +96,16 @@ k logs -f pod01 cont01 // Stream logs for container "cont01" under pod01
 
 # Moving to Deployments
 
-k create deploy mydeploy01 --image nginx
+k create deploy mydeploy01 --image nginx // Creates a Deployment "mydeploy01" with nginx image
+
+k scale deploy mydeploy01 --replicas=3 // Scales deployment to have 3 replicasets
+
+k set image deploy mydeploy01 pod001=busybox // Sets image of pod001 to busybox
+
+k set image deploy mydeploy01 cont01=nginx cont02=busybox cont03=bash // Used for multi-container pods, to set an image for containers
+
+k autoscale deploy mydeploy01 --min=5 --max=10 --cpu-percent=80 // Autoscales deployment between 5 to 10 with max CPU utilization at 80%
+
+
+
 
